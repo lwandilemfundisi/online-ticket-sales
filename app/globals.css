@@ -1,26 +1,58 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.site-header, .components-header {
+    position: relative;
+    width: 100%;
+    background-color: #f9fbfb;
+    z-index: 150;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+.fw-section {
+    width: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.fw-section, .fh-section {
+    position: relative;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.padding-bottom-5x {
+    padding-bottom: 120px !important;
+}
+
+.padding-top-3x {
+    padding-top: 72px !important;
+}
+
+.fw-section .bg-inset-shadow-both, .fh-section .bg-inset-shadow-both {
+    -webkit-box-shadow: inset 0 0 25px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: inset 0 0 25px -1px rgba(0, 0, 0, 0.17);
+}
+
+.fw-section .bg-angle, .fh-section .bg-angle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: skewY(-3deg);
+    transform: skewY(-3deg);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.fw-section > .container, .fw-section > .container-fluid, .fw-section > div, .fh-section > .container, .fh-section > .container-fluid, .fh-section > div {
+    position: relative;
+    z-index: 5;
+}
+
+.bg-pattern{
+    background-image: url('/background-pattern.png');
 }
