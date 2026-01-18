@@ -56,3 +56,40 @@
 .bg-pattern{
     background-image: url('/background-pattern.png');
 }
+
+.text-center .social-button.shape-circle, .text-center .social-button.shape-rounded, .text-center .social-button.shape-square {
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+
+.text-center .social-button {
+    margin-right: 9px;
+    margin-left: 9px;
+}
+
+.social-button.shape-circle {
+    border-radius: 50%;
+}
+
+.social-button.shape-circle, .social-button.shape-rounded, .social-button.shape-square {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    border: 1px solid #dfdfdf;
+    line-height: 35px;
+    text-align: center;
+}
+
+.social-button {
+    display: inline-block;
+    margin-top: 5px;
+    margin-right: 18px;
+    margin-bottom: 5px;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+    color: #626262;
+    font-size: 16px;
+    text-decoration: none;
+    vertical-align: middle;
+}

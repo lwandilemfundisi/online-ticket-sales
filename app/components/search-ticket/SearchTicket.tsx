@@ -6,8 +6,8 @@ function SearchTicket(){
             <div className="col-3"></div>
             <div className="col-6">
                 <Form className="text-center">
-                    <h1>LIVE MORE</h1>
-                    <h3 className="mb-5">Find the fun you are looking for...</h3>
+                    <h1>Live More</h1>
+                    <p className="mb-3">Find the fun you are looking for...</p>
                     <InputGroup className="mb-3">                        
                         <Form.Control
                             placeholder="search for any event"
