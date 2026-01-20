@@ -5,6 +5,9 @@ import "./globals.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import CartSummaryProvider from "./contexts/CartSummaryProvider";
+import HeaderImage from "./components/header-image/HeaderImage";
+import CartSummary from "./components/cart-summary/CartSummary";
+import HeaderNav from "./components/header-nav/HeaderNav";
 
 export default function RootLayout({
   children,
@@ -15,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CartSummaryProvider>
-          <Header/>
+          <Header HeaderIcon={<HeaderImage/>} HeaderNav={<HeaderNav/>} HeaderActionPanel={<CartSummary/>}/>
           {children}
           <Footer/>
           <BootstrapClient/>

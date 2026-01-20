@@ -1,3 +1,5 @@
+import "server-only";
+
 function Footer() {
     return(
         <footer className="text-center text-lg-start bg-body-tertiary text-muted fixed-bottom">

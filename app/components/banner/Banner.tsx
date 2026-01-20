@@ -1,3 +1,5 @@
+import "server-only";
+
 import { ElementType } from "react";
 
 interface BannerProps{

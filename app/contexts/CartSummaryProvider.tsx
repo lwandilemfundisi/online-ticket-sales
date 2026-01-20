@@ -8,12 +8,12 @@ export const CartSummaryContext = createContext<{
     setCartSummary: Dispatch<SetStateAction<CartSummaryModel>>;
 }>
 ({
-    cartSummary: {totItems: 1, totCost: 1},
+    cartSummary: {totItems: 0, totCost: 0},
     setCartSummary: ()=>{}
 });
 
 function CartSummaryProvider({children} : { children: ReactNode }) {
-    const [cartSummary, setCartSummary] = useState<CartSummaryModel>({totItems: 12, totCost: 1});
+    const [cartSummary, setCartSummary] = useState<CartSummaryModel>({totItems: 0, totCost: 0});
 
     return (
         <CartSummaryContext.Provider value={{cartSummary, setCartSummary}}>

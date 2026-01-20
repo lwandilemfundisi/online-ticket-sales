@@ -1,3 +1,5 @@
+import "server-only";
+
 function Subscribe(){
     return (
         <div className="row justify-content-center pt-4 text-center">

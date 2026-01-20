@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Form, InputGroup } from "react-bootstrap";
 
 function SearchTicket(){
