@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./globals.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import CartSummaryProvider from "./contexts/CartSummaryProvider";
 
 export default function RootLayout({
   children,
@@ -13,10 +14,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header/>
-        {children}
-        <Footer/>
-        <BootstrapClient/>
+        <CartSummaryProvider>
+          <Header/>
+          {children}
+          <Footer/>
+          <BootstrapClient/>
+        </CartSummaryProvider>
       </body>
     </html>
   );
