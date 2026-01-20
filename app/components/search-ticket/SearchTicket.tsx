@@ -4,7 +4,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 
 function SearchTicket(){
     return (
-        <div className="row">
+        <div className="row padding-top-3x">
             <div className="col-3"></div>
             <div className="col-6">
                 <Form className="text-center">

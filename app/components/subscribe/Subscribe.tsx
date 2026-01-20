@@ -2,7 +2,7 @@ import "server-only";
 
 function Subscribe(){
     return (
-        <div className="row justify-content-center pt-4 text-center">
+        <div className="row justify-content-center pt-4 text-center padding-top-3x padding-bottom-5x">
             <div className="col-xl-8 col-lg-9 col-md-10">
                 <h2 className="mb-3">
                     <i className="d-block fas fa-envelope text-primary mb-3 w-100"></i>

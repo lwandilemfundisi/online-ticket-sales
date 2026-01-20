@@ -2,7 +2,7 @@ import "server-only";
 
 function Social(){
     return (
-        <div className="row justify-content-center pt-4 text-center">
+        <div className="row justify-content-center pt-4 text-center padding-top-3x padding-bottom-3x">
             
             <div className="col-xl-5 col-lg-6 col-md-8  text-center justify-content-center">
                 <h2 className="mb-3">

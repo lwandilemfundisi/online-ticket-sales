@@ -9,7 +9,7 @@ interface BannerProps{
 
 const Banner: React.FC<BannerProps> = ({AnotherComponent, ApplyBackgound}) => {
     return(
-        <section className="fw-section padding-top-3x padding-bottom-5x">
+        <section className="fw-section padding-bottom-5x">
             <div className={`bg-angle bg-inset-shadow-both ${ApplyBackgound ? 'bg-pattern' : '' } `}></div>
             <div className="container">
                 <AnotherComponent/>
