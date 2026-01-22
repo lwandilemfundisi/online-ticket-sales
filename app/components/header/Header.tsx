@@ -1,6 +1,6 @@
 import "server-only";
 
-import { HeaderChildrenModel } from "@/app/interfaces/HeaderChildrenModel";
+import { HeaderChildrenModel } from "@/interfaces/HeaderChildrenModel";
 
 function Header({HeaderIcon, HeaderNav, HeaderActionPanel} : HeaderChildrenModel){
     return (

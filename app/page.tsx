@@ -1,10 +1,10 @@
 import "server-only";
 
-import Banner from "./components/banner/Banner";
-import SearchTicket from "./components/search-ticket/SearchTicket";
-import SlidingBanner from "./components/sliding-banner/SlidingBanner";
-import Social from "./components/social/Social";
-import Subscribe from "./components/subscribe/Subscribe";
+import Banner from "@/components/banner/Banner";
+import SearchTicket from "@/components/search-ticket/SearchTicket";
+import SlidingBanner from "@/components/sliding-banner/SlidingBanner";
+import Social from "@/components/social/Social";
+import Subscribe from "@/components/subscribe/Subscribe";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import "server-only";
 
 import Image from "next/image";
-import logo from "../../assets/svgs/online-tickets-logo.svg";
+import logo from "@/assets/svgs/online-tickets-logo.svg";
 import headerImageStyles from "./HeaderImage.module.css"
 
 

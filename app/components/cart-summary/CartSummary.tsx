@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useContext} from "react";
-import { CartSummaryContext } from "@/app/contexts/CartSummaryProvider";
+import { CartSummaryContext } from "@/contexts/CartSummaryProvider";
 
 function CartSummary(){
 

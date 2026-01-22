@@ -1,10 +1,10 @@
 'use client'
 
 import Image from "next/image";
-import img1 from "../../assets/jpgs/panel_Asher.jpg";
-import img2 from "../../assets/jpgs/panel_Freshlyground.jpg";
-import img3 from "../../assets/jpgs/panel_Rhebokskloof.jpg";
-import img4 from "../../assets/jpgs/panel_TheCelebration.jpg";
+import img1 from "@/assets/jpgs/panel_Asher.jpg";
+import img2 from "@/assets/jpgs/panel_Freshlyground.jpg";
+import img3 from "@/assets/jpgs/panel_Rhebokskloof.jpg";
+import img4 from "@/assets/jpgs/panel_TheCelebration.jpg";
 import { Carousel } from "react-bootstrap";
 
 const style = {

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
-import { CartSummaryModel } from "../interfaces/CartSummaryModel";
+import { CartSummaryModel } from "@/interfaces/CartSummaryModel";
 
 export const CartSummaryContext = createContext<{
     cartSummary: CartSummaryModel;

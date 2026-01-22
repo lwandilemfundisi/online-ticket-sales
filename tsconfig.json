@@ -24,7 +24,25 @@
     ],
     "paths": {
       "@/*": [
-        "./*"
+        "./app/*"
+      ],
+      "@/app/components/*": [
+        "./app/components/*"
+      ],
+      "@/contexts/*": [
+        "./app/contexts/*"
+      ],
+      "@/interfaces/*": [
+        "./app/interfaces/*"
+      ],
+      "@/assets/*": [
+        "./app/assets/*"
+      ],
+      "@/contact/*": [
+        "./app/contact/*"
+      ],
+      "@/about/*": [
+        "./app/about/*"
       ]
     }
   },
