@@ -16,7 +16,7 @@ function SlidingBanner(){
         <div className="row  padding-bottom-3x">
             <div className="col-3"></div>
             <div className="col-6 text-center">
-                <h2 className="mb-2 pt-4"><i className="fas fa-star text-primary">&nbsp;</i>Featured Events</h2>
+                <h2 className="mb-5 pt-4"><i className="fas fa-star text-primary">&nbsp;</i>Featured Events</h2>
                 <Carousel className="carousel-dark" controls={false} indicators={true}>
                     <Carousel.Item>
                         <Image src={img1} className="d-block w-100" alt="..." />
