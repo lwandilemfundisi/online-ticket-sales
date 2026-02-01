@@ -43,6 +43,9 @@
       ],
       "@/about/*": [
         "./app/about/*"
+      ],
+      "@/helpers/*": [
+        "./app/helpers/*"
       ]
     }
   },
