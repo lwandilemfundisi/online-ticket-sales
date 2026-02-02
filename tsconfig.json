@@ -46,6 +46,9 @@
       ],
       "@/helpers/*": [
         "./app/helpers/*"
+      ],
+      "@/hooks/*": [
+        "./app/hooks/*"
       ]
     }
   },
