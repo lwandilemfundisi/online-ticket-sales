@@ -24,7 +24,19 @@ jobs:
       - name: Build Next.js application
         run: npm run build
 
+      - name: Stop IIS
+        run: |
+          Import-Module WebAdministration
+          Stop-WebAppPool -Name 'OnlineTicketSales'
+          
       - name: Deploy to IIS
         run: |
-          # Remove old files except logs
-          robocopy . C:\inetpub\wwwroot\online-ticket-sales /MIR /XD .git node_modules
+          $source = ".next"
+          $destination = "C:\inetpub\wwwroot\OnlineTicketSales"
+          Remove-Item -Path $destination\* -Recurse -Force
+          Copy-Item "$source\*" $destination -Recurse -Force
+
+      - name: Start IIS
+        run: |
+          Import-Module WebAdministration
+          Start-WebAppPool -Name 'OnlineTicketSales'
