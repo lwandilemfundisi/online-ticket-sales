@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy to IIS
         run: |
-          $source = "${{ github.workspace }}\.next\standalone"
+          $source = "${{ github.workspace }}\.next"
           $destination = "C:\inetpub\wwwroot\online-ticket-sales"
           Remove-Item -Path $destination\* -Recurse -Force
           Copy-Item "$source\*" $destination -Recurse -Force
