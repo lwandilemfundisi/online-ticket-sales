@@ -1,0 +1,49 @@
+name: Deploy Next.js to IIS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy: 
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+
+      - name: Export Next.js application
+        run: npm run export
+
+      - name: Stop IIS site
+        run: |
+            Import-Module WebAdministration
+            Stop-WebSite -Name "OnlineTicketSales"
+
+      - name: Deploy to IIS
+        run: |
+            $source = "out"
+            $destination = "C:\inetpub\wwwroot\OnlineTicketSales"
+
+            if(Test-Path $destination) {
+                Remove-Item "$destination\*" -Recurse -Force
+            }
+
+            Copy-Item $source $destination -Recurse -Force
+            
+      - name: Start IIS site
+        run: |
+            Import-Module WebAdministration
+            Start-WebSite -Name "OnlineTicketSales"

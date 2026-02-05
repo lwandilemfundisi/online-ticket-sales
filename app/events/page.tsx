@@ -4,20 +4,38 @@ import SearchTicket from "@/components/search-ticket/SearchTicket";
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/esm/Card";
 import useEvents from "@/hooks/useEvents";
+import { CSSProperties } from "react";
+import EventsLoading from "@/components/events-loading/EventsLoading";
+import loadingStatus from "@/helpers/loadingStatus";
+import ImageLoading from "@/components/image-loading/ImageLoading";
 
-function Events(){
-    
-    const {events} = useEvents();
+const cardImage: CSSProperties = {
+    minHeight: '265px', maxHeight: '265px', objectFit: 'cover'
+};
+
+const cardBody: CSSProperties = {
+    minHeight: '150px', maxHeight: '150px'
+};
+
+function Events() {
+
+    const { events, loadingState } = useEvents();
+
+    if (loadingState === loadingStatus.isLoading) {
+        return (
+            <EventsLoading />
+        );
+    }
 
     return (
         <Container>
             <SearchTicket />
-            <Row xs={1} md={3} className="g-4 padding-top-3x">
+            <Row xs={1} md={3} className="g-4 padding-top-2x">
                 {events.map((event) => (
                     <Col key={event.id}>
                         <Card>
-                            <Card.Img variant="top" src={event.imageUrl} />
-                            <Card.Body>
+                            <ImageLoading src={event.imageUrl} alt={event.eventName} style={cardImage} />
+                            <Card.Body style={cardBody}>
                                 <Card.Title>{event.eventName}</Card.Title>
                                 <Card.Text>
                                     {event.description}
