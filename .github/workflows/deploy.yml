@@ -27,4 +27,4 @@ jobs:
       - name: Deploy to IIS
         run: |
           # Remove old files except logs
-          robocopy . C:\inetpub\wwwroot /MIR /XD .git node_modules
+          robocopy . C:\inetpub\wwwroot\online-ticket-sales /MIR /XD .git node_modules
