@@ -58,7 +58,7 @@
 }
 
 .bg-pattern{
-    background-image: url('/background-pattern.png');
+    background-image: url('/assets/images/background-pattern.png');
 }
 
 .text-center .social-button.shape-circle, .text-center .social-button.shape-rounded, .text-center .social-button.shape-square {
