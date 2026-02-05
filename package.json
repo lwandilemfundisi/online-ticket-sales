@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && robocopy .next\\static .next\\standalone\\.next\\static /E /LOG:robocopy-static.log /TEE; if($LASTEXITCODE -le 7) { exit 0 } else { exit $LASTEXITCODE} && robocopy public .next\\standalone\\public /E /LOG:robocopy-static.log /TEE; if($LASTEXITCODE -le 7) { exit 0 } else { exit $LASTEXITCODE}",
+    "build": "powershell -Command \"next build; robocopy .next\\static .next\\standalone\\.next\\static /E /LOG:robocopy-static.log /TEE; if ($LASTEXITCODE -gt 7) { exit $LASTEXITCODE }; robocopy public .next\\standalone\\public /E /LOG:robocopy-public.log /TEE; if ($LASTEXITCODE -gt 7) { exit $LASTEXITCODE }\"",
     "start": "next start -p 3000",
     "lint": "eslint"
   },
