@@ -24,7 +24,7 @@ jobs:
       - name: Build Next.js application
         run: npm run build
 
-      - name: Start Next.js application
+      - name: Deploy to IIS
         run: |
-          npm install --production
-          npm start 
+          # Remove old files except logs
+          robocopy . C:\inetpub\wwwroot /MIR /XD .git node_modules

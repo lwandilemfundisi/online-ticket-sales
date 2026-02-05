@@ -1,11 +1,18 @@
 <?xml  version="1.0" encoding = "utf-8"?>
 <configuration>
   <system.webServer>
+  <handlers>
+    <add name="iisnode" path="server.js" verb="*" modules="iisnode" />
+  </handlers>
     <rewrite>
       <rules>
-        <rule name="ReverseProxyInboundRule" stopProcessing="true">
-          <match url="(.*)" />
-          <action type="Rewrite" url="http://localhost:3000/{R:1}" />
+        <rule name="NestJS" stopProcessing="true">
+          <match url=".*" />
+          <action type="Rewrite" url="server.js" />
       </rules>
     </rewrite>
+    <iisnode
+      nodeProcessCommandLine="C:\Program Files\nodejs\node.exe"
+      loggingEnabled="true"
+    />
   </system.webServer>
