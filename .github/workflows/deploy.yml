@@ -24,10 +24,10 @@ jobs:
       - name: Build Next.js application
         run: npm run build
 
-      - name: Stop IIS
-        run: |
-          Import-Module WebAdministration
-          Stop-WebAppPool -Name 'OnlineTicketSales'
+      #- name: Stop IIS
+        #run: |
+         # Import-Module WebAdministration
+         # Stop-WebAppPool -Name 'OnlineTicketSales'
 
       - name: Deploy to IIS
         run: |
@@ -36,7 +36,11 @@ jobs:
           Remove-Item -Path $destination\* -Recurse -Force
           Copy-Item "$source\*" $destination -Recurse -Force
 
-      - name: Start IIS
+      - name: Restart PM2
         run: |
-          Import-Module WebAdministration
-          Start-WebAppPool -Name 'OnlineTicketSales'
+          pm2 start ecosystem.config.js
+
+     #- name: Start IIS
+       # run: |
+        #  Import-Module WebAdministration
+        #  Start-WebAppPool -Name 'OnlineTicketSales'
