@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy to IIS
         run: |
-          $source = ".next"
+          $source = ".next\standalone\react-next-ticket-sales-ui\online-ticket-sales"
           $destination = "C:\inetpub\wwwroot\online-ticket-sales"
           Remove-Item -Path $destination\* -Recurse -Force
           Copy-Item "$source\*" $destination -Recurse -Force
