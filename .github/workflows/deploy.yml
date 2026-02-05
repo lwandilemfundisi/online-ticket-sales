@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -28,11 +28,11 @@ jobs:
         run: |
           Import-Module WebAdministration
           Stop-WebAppPool -Name 'OnlineTicketSales'
-          
+
       - name: Deploy to IIS
         run: |
           $source = ".next"
-          $destination = "C:\inetpub\wwwroot\OnlineTicketSales"
+          $destination = "C:\inetpub\wwwroot\online-ticket-sales"
           Remove-Item -Path $destination\* -Recurse -Force
           Copy-Item "$source\*" $destination -Recurse -Force
 
