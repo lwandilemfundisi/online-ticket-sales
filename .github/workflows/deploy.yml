@@ -27,4 +27,4 @@ jobs:
       - name: Start Next.js application
         run: |
           npm install --production
-          pm2 start "node_modules\next\dist\bin\next" --name "online-ticket-sales" -- start pm2 save
+          npm start 
