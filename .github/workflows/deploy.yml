@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Export Next.js application
-        run: npm run export
+        run: npm run build
 
       - name: Stop IIS site
         run: |
