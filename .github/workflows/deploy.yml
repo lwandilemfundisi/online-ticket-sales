@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
@@ -24,26 +24,7 @@ jobs:
       - name: Build Next.js application
         run: npm run build
 
-      - name: Export Next.js application
-        run: npm run build
-
-      - name: Stop IIS site
+      - name: Start Next.js application
         run: |
-            Import-Module WebAdministration
-            Stop-WebSite -Name "OnlineTicketSales"
-
-      - name: Deploy to IIS
-        run: |
-            $source = "out"
-            $destination = "C:\inetpub\wwwroot\OnlineTicketSales"
-
-            if(Test-Path $destination) {
-                Remove-Item "$destination\*" -Recurse -Force
-            }
-
-            Copy-Item $source $destination -Recurse -Force
-
-      - name: Start IIS site
-        run: |
-            Import-Module WebAdministration
-            Start-WebSite -Name "OnlineTicketSales"
+          npm install --production
+          pm2 restart online-ticket-sales || pm2 start npm --name "online-ticket-sales" -- start pm2 save
