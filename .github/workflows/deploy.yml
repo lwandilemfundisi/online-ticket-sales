@@ -24,23 +24,28 @@ jobs:
       - name: Build Next.js application
         run: npm run build
 
-      #- name: Stop IIS
-        #run: |
-         # Import-Module WebAdministration
-         # Stop-WebAppPool -Name 'OnlineTicketSales'
-
-      - name: Deploy to IIS
+      - name: Prepare standalone folder
+        shell: powershell
         run: |
-          $source = "${{ github.workspace }}\.next\standalone"
-          $destination = "C:\inetpub\wwwroot\online-ticket-sales"
-          Remove-Item -Path $destination\* -Recurse -Force
-          Copy-Item "$source\*" $destination -Recurse -Force
+          Remove-Item -Recurse -Force "standalone" -ErrorAction SilentlyContinue
+          Copy-Item ".next\standalone" ".\standalone" -Recurse -Force
+          New-Item -ItemType Directory -Force -Path ".\standalone\.next" | Out-Null
+          Copy-Item ".next\static" "standalone\.next\" -Recurse -Force
+          Copy-Item "public" "standalone\public" -Recurse -Force
 
-      - name: Restart PM2
+      - name: Deploy to IIS Directory
+        shell: powershell
         run: |
-          pm2 start ecosystem.config.js
+          $target = "C:\inetpub\wwwroot\online-ticket-sales"
+          if( Test-Path $target ) {
+              New-Item -ItemType Directory -Path $target | Out-Null
+          }
+          Copy-Item "standalone" $target -Recurse -Force
+          Copy-Item "ecosystem.config.js" $target -Force
 
-     #- name: Start IIS
-       # run: |
-        #  Import-Module WebAdministration
-        #  Start-WebAppPool -Name 'OnlineTicketSales'
+      - name: Restart Application Pool
+        shell: powershell
+        run: |
+          cd C:\inetpub\wwwroot\online-ticket-sales
+          pm2 start ecosystem.config.js --only online-ticket-sales --update-env
+          pm2 save
