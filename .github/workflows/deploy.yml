@@ -43,8 +43,6 @@ jobs:
           Copy-Item "standalone" $target -Recurse -Force
           Copy-Item "ecosystem.config.js" $target -Force
           Copy-Item "web.config" $target -Force
-          Copy-Item "cert.pem" $target -Force
-          Copy-Item "key.pem" $target -Force
 
       - name: Restart Application Pool
         shell: powershell

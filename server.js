@@ -7,8 +7,8 @@ const fs = require('fs');
 const app = next({ dev: false });
 const handle = app.getRequestHandler();
 const httpsOptions = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
+  key: fs.readFileSync('C:\\certs\\online-ticket-certs\\key.pem'),
+  cert: fs.readFileSync('C:\\certs\\online-ticket-certs\\cert.pem'),
 };
 const port = 3002;
 app.prepare().then(() => {
