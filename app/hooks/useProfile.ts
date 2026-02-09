@@ -4,7 +4,7 @@ import { Claim } from "@/interfaces/Claims";
 
 const useProfile = ()=> {
 
-    const {get, loadingState} = useGetReq("bff/account/user?slide=false");
+    const {get, loadingState} = useGetReq("bff/auth/user?slide=false");
 
     const [claims, setClaims] = useState<Claim[] | null>([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,11 +22,11 @@ const useProfile = ()=> {
     }, [get]);
 
     const login = useCallback(
-        () => window.location.replace("bff/account/login"), []
+        () => window.location.replace("bff/auth/login"), []
     );
 
     const logout = useCallback(
-        () => window.location.replace("bff/account/logout"), []
+        () => window.location.replace("bff/auth/logout"), []
     );
 
     const getNameClaim = useCallback(
