@@ -2,12 +2,18 @@ import "server-only"
 
 import { NextRequest, NextResponse } from "next/server";
 
-export function proxy(request: NextRequest){
-    const session = request.cookies.get('__Host-spa');
-    if(!session){
-        const loginUri = new URL('bff/auth/login', request.url);
-        loginUri.searchParams.set('returnUrl', request.nextUrl.pathname + request.nextUrl.search);
-        return NextResponse.redirect(loginUri, { status: 303 })
+export async function proxy(request: NextRequest) {
+    try {
+        const rsp = await fetch("bff/auth/user?slide=false");
+        const claims = await rsp.json();
+        if (!(claims && claims.length > 0)) {
+            const loginUri = new URL('bff/auth/login', request.url);
+            loginUri.searchParams.set('returnUrl', request.nextUrl.pathname + request.nextUrl.search);
+            return NextResponse.redirect(loginUri, { status: 303 })
+        }
+
+    } catch (error) {
+        console.error(error);
     }
 
     return NextResponse.next();
