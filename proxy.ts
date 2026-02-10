@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function proxy(request: NextRequest) {
     try {
-        const rsp = await fetch("bff/auth/user?slide=false", {credentials: 'include'});
+        const rsp = await fetch("bff/auth/user?slide=false", { credentials: 'include' });
         const claims = await rsp.json();
         console.log(claims);
         if (!(claims && claims.length > 0)) {
