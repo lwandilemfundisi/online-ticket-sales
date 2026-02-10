@@ -13,12 +13,10 @@ export async function proxy(request: NextRequest) {
             loginUri.searchParams.set('returnUrl', request.nextUrl.pathname + request.nextUrl.search);
             return NextResponse.redirect(loginUri, { status: 303 })
         }
-
+        return NextResponse.next();
     } catch (error) {
         console.error(error);
     }
-
-    return NextResponse.next();
 }
 
 export const config = {
