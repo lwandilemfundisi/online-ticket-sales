@@ -9,7 +9,7 @@ export async function proxy(req: NextRequest) {
         // Optional: check for session cookie, redirect to login if missing 
         const bffCookie = req.cookies.get("__Host-bff")?.value;
         if (!bffCookie) {
-            const loginUrl = new URL("/bff/login", req.url);
+            const loginUrl = new URL("/bff/auth/login", req.url);
             return NextResponse.redirect(loginUrl);
         }
         // Build BFF URL 
