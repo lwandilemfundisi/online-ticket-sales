@@ -16,10 +16,13 @@ export async function proxy(req: NextRequest) {
                 origin: "https://localhost:444",
             },
         });
-        console.info(`Fetch user claims response status: ${JSON.stringify(rsp)}`);
-        if (!rsp.ok) {
+        console.info(`Fetch user claims response status: ${rsp.status}`);
+        if (rsp.status === 401) {
+            console.warn("Unauthorized response received, redirecting to login.");
+            return clearBffCookie(req);
+        } else if (!rsp.ok) {
             console.error(`Failed to fetch user claims: ${rsp.statusText}`);
-            return redirectToLogin(req);
+            return clearBffCookie(req);
         }
         console.info("User claims fetched successfully, parsing response.");
         const userRsp = await rsp.json();
@@ -40,6 +43,14 @@ function redirectToLogin(req: NextRequest) {
     const loginUrl = new URL("/bff/auth/login", req.url);
     loginUrl.searchParams.set('returnUrl', req.nextUrl.pathname + req.nextUrl.search);
     return NextResponse.redirect(loginUrl);
+}
+
+function clearBffCookie(req: NextRequest) {
+    const response = redirectToLogin(req);
+    for (const [name] of req.cookies) {
+        response.cookies.delete(name);
+    }
+    return response;
 }
 
 // Apply middleware to /cart routes 
