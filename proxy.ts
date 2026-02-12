@@ -12,7 +12,7 @@ export async function proxy(req: NextRequest) {
         const rsp = await fetch("https://localhost:444/bff/auth/user", {
             method: "GET",
             headers: {
-                cookie: `__Host-bff=${bffCookie}`,
+                cookie: req.headers.get("cookie") || "",
                 origin: "https://localhost:444",
             },
         });
