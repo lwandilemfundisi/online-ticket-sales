@@ -12,12 +12,10 @@ export async function proxy(req: NextRequest) {
         const rsp = await fetch("https://localhost:444/bff/auth/user?slide=false", {
             method: "GET",
             headers: {
-                cookie: bffCookie,
-                "X-Forwarded-Host": "localhost:444",
-                "X-Forwarded-Proto": "https",
+                authorization: `Bearer ${bffCookie}`,
             },
         });
-        console.info(`Fetch user claims response status: ${rsp.status}`);
+        console.info(`Fetch user claims response status: ${rsp}`);
         if (!rsp.ok) {
             console.error(`Failed to fetch user claims: ${rsp.statusText}`);
             return redirectToLogin(req);
