@@ -11,10 +11,10 @@ const useProfile = ()=> {
 
     useEffect(()=>{
         const getUserClaims = async () => {
-            const claims = await get();
-            setClaims(claims);
+            const userRsp = await get();
+            setClaims(userRsp?.claims || []);
 
-            if(claims && claims.length > 0)
+            if(userRsp?.claims && userRsp?.claims.length > 0)
                 setIsAuthenticated(true);
         };
 
