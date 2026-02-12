@@ -8,7 +8,7 @@ export async function proxy(req: NextRequest) {
     }
 
     try {
-        const rsp = await fetch("/bff/auth/user?slide=false");
+        const rsp = await fetch("bff/auth/user?slide=false");
         if (!rsp.ok) {
             return redirectToLogin(req);
         }
