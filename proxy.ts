@@ -6,18 +6,22 @@ export async function proxy(req: NextRequest) {
     if (!bffCookie) {
         return redirectToLogin(req);
     }
+    console.info("BFF cookie found, proceeding to fetch user claims.");
 
     try {
         const rsp = await fetch("bff/auth/user?slide=false");
+        console.info(`Fetch user claims response status: ${rsp.status}`);
         if (!rsp.ok) {
+            console.error(`Failed to fetch user claims: ${rsp.statusText}`);
             return redirectToLogin(req);
         }
-
+        console.info("User claims fetched successfully, parsing response.");
         const claims = await rsp.json();
         if (!(claims && claims.length > 0)) {
+            console.warn("No claims found in response, redirecting to login.");
             return redirectToLogin(req);
         }
-
+        console.info("User claims are valid, allowing request to proceed.");
         return NextResponse.next();
     } catch (error) {
         console.error("Error fetching user claims:", error);
