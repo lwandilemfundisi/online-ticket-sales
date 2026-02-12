@@ -9,9 +9,7 @@ export async function proxy(req: NextRequest) {
     console.info("BFF cookie found, proceeding to fetch user claims.");
 
     try {
-        const url = new URL("/bff/auth/user?slide=false", req.url);
-        console.info(`Fetching user claims from: ${url.toString()}`);
-        const rsp = await fetch(url, {
+        const rsp = await fetch("https://localhost:444/bff/auth/user?slide=false", {
             method: "GET",
             headers: {
                 cookie: bffCookie,
