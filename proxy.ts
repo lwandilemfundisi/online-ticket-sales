@@ -23,6 +23,7 @@ export async function proxy(req: NextRequest) {
         }
         console.info("User claims fetched successfully, parsing response.");
         const claims = await rsp.json();
+        console.info(`User claims: ${JSON.stringify(claims)}`);
         if (!(claims && claims.length > 0)) {
             console.warn("No claims found in response, redirecting to login.");
             return redirectToLogin(req);
