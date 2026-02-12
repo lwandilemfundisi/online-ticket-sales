@@ -9,13 +9,14 @@ export async function proxy(req: NextRequest) {
     console.info("BFF cookie found, proceeding to fetch user claims.");
 
     try {
-        const rsp = await fetch("https://localhost:444/bff/auth/user?slide=false", {
+        const rsp = await fetch("https://localhost:444/bff/auth/user", {
             method: "GET",
             headers: {
-                authorization: `Bearer ${bffCookie}`,
+                cookie: `__Host-bff=${bffCookie}`,
+                origin: "https://localhost:444",
             },
         });
-        console.info(`Fetch user claims response status: ${rsp}`);
+        console.info(`Fetch user claims response status: ${JSON.stringify(rsp)}`);
         if (!rsp.ok) {
             console.error(`Failed to fetch user claims: ${rsp.statusText}`);
             return redirectToLogin(req);
