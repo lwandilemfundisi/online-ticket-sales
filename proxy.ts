@@ -13,6 +13,8 @@ export async function proxy(req: NextRequest) {
             method: "GET",
             headers: {
                 cookie: bffCookie,
+                "X-Forwarded-Host": "localhost:444",
+                "X-Forwarded-Proto": "https",
             },
         });
         console.info(`Fetch user claims response status: ${rsp.status}`);
