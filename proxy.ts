@@ -9,7 +9,7 @@ export async function proxy(req: NextRequest) {
     console.info("BFF cookie found, proceeding to fetch user claims.");
 
     try {
-        const rsp = await fetch("bff/auth/user?slide=false");
+        const rsp = await fetch("https://localhost:444/bff/auth/user?slide=false");
         console.info(`Fetch user claims response status: ${rsp.status}`);
         if (!rsp.ok) {
             console.error(`Failed to fetch user claims: ${rsp.statusText}`);
