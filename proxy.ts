@@ -9,7 +9,7 @@ export async function proxy(req: NextRequest) {
             origin: "https://localhost:444",
         },
     });
-
+    console.log("bff response status:", rsp.status);
     if (rsp.status === 401) {
         console.warn("Unauthorized response received, redirecting to login.");
         return await redirectToLogin(req);
