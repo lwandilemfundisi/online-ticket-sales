@@ -5,6 +5,7 @@ import { NavDropdown, Spinner } from "react-bootstrap";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import loadingStatus from "@/helpers/loadingStatus";
+import "@/app/components/profile/Profile.module.css";
 
 function Profile() {
 
