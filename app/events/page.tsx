@@ -27,6 +27,12 @@ function Events() {
         );
     }
 
+    if(loadingState === loadingStatus.hasErrored) {
+        return (
+            <EventsLoading />
+        );
+    }
+
     return (
         <Container>
             <SearchTicket />

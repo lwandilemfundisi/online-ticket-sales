@@ -11,7 +11,7 @@ export async function proxy(req: NextRequest) {
     });
     
     if (rsp.status != 200) {
-        return await redirectToLogin(req);
+        return redirectToLogin(req);
     }
     return NextResponse.next();
 }
