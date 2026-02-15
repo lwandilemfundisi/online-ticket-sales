@@ -17,7 +17,10 @@ function Profile() {
     );
 
     const signOutTitle = (
-        getNameClaim()
+        <span className="d-flex align-items-center">
+            <FontAwesomeIcon icon={faUser} className="me-2" />
+            {getNameClaim()}
+        </span>
     );
 
     if (loadingState === loadingStatus.isLoading) {
