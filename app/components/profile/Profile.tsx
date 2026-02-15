@@ -4,6 +4,7 @@ import useProfile from "@/hooks/useProfile";
 import { NavDropdown, Spinner } from "react-bootstrap";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import loadingStatus from "@/helpers/loadingStatus";
 
 function Profile() {
 
@@ -19,7 +20,7 @@ function Profile() {
         getNameClaim()
     );
 
-    if (loadingState === "loading") {
+    if (loadingState === loadingStatus.isLoading) {
         return (
             <Spinner animation="grow" variant="primary"/>
         );
