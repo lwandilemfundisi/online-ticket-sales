@@ -27,7 +27,7 @@ function Events() {
         );
     }
 
-    if(loadingState === loadingStatus.hasErrored) {
+    if (loadingState === loadingStatus.hasErrored) {
         return (
             <EventsLoading />
         );
@@ -36,21 +36,33 @@ function Events() {
     return (
         <Container>
             <SearchTicket />
-            <Row xs={1} md={3} className="g-4 padding-top-2x">
-                {events.map((event) => (
-                    <Col key={event.id}>
-                        <Card>
-                            <ImageLoading src={event.imageUrl} alt={event.eventName} style={cardImage} />
-                            <Card.Body style={cardBody}>
-                                <Card.Title>{event.eventName}</Card.Title>
-                                <Card.Text>
-                                    {event.description}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
+            {
+                loadingState === loadingStatus.isLoading && (
+                    <EventsLoading />
+                )
+                ||
+                loadingState === loadingStatus.hasErrored && (
+                    <EventsLoading />
+                )
+                ||
+                loadingState === loadingStatus.loaded && events.length === 0 && (
+                    <Row xs={1} md={3} className="g-4 padding-top-2x">
+                    {events.map((event) => (
+                        <Col key={event.id}>
+                            <Card>
+                                <ImageLoading src={event.imageUrl} alt={event.eventName} style={cardImage} />
+                                <Card.Body style={cardBody}>
+                                    <Card.Title>{event.eventName}</Card.Title>
+                                    <Card.Text>
+                                        {event.description}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+                )
+            }
         </Container>
     );
 }
