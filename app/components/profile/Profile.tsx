@@ -35,13 +35,13 @@ function Profile() {
             {
                 isAuthenticated ?
                     <div className="input-group d-flex align-items-center justify-content-center">
-                        <NavDropdown title={signOutTitle} id="basic-nav-dropdown">
+                        <NavDropdown title={signOutTitle} className="no-caret-dropdown">
                             <NavDropdown.Item onClick={logout}>SIGN OUT</NavDropdown.Item>
                         </NavDropdown>
                     </div>
                     :
                     <div className="input-group d-flex align-items-center justify-content-center">
-                        <NavDropdown title={signIntitle} id="basic-nav-dropdown">
+                        <NavDropdown title={signIntitle}>
                             <NavDropdown.Item onClick={login}>SIGN IN</NavDropdown.Item>
                         </NavDropdown>
                     </div>
