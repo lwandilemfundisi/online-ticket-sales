@@ -11,7 +11,7 @@ function Profile() {
 
     const signIntitle = (
         <span className="border border-primary rounded-circle p-2 bg-light text-primary">
-            <FontAwesomeIcon icon={faUser} className="pe-4" />
+            <FontAwesomeIcon icon={faUser} />
         </span>
     );
 
