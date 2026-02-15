@@ -97,3 +97,7 @@
     text-decoration: none;
     vertical-align: middle;
 }
+
+.no-caret-dropdown .dropdown-toggle::after {
+  display: none !important;
+}
