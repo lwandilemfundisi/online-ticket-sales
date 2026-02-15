@@ -1,13 +1,13 @@
 "use client"
 
 import useProfile from "@/hooks/useProfile";
-import { NavDropdown } from "react-bootstrap";
+import { NavDropdown, Spinner } from "react-bootstrap";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Profile() {
 
-    const { login, logout, isAuthenticated, getNameClaim } = useProfile();
+    const { login, logout, isAuthenticated, getNameClaim, loadingState } = useProfile();
 
     const signIntitle = (
         <span className="border border-primary rounded-circle p-2 bg-light text-primary">
@@ -18,6 +18,12 @@ function Profile() {
     const signOutTitle = (
         getNameClaim()
     );
+
+    if (loadingState === "loading") {
+        return (
+            <Spinner animation="grow" variant="primary"/>
+        );
+    }
 
     return (
         <>
