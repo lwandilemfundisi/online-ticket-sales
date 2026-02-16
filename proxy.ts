@@ -13,6 +13,7 @@ export async function proxy(req: NextRequest) {
     if (rsp.status != 200) {
         return redirectToLogin(req);
     }
+    console.info("User is authenticated, proceeding to cart", await rsp.json());
     return NextResponse.next();
 }
 
