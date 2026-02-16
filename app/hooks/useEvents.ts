@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useGetReq from "@/hooks/useGetReq";
 
 const useEvents = () => {
-    const {get, loadingState} = useGetReq("bff/events/getevents");
+    const {get, loadingState} = useGetReq("bff/events/event/getevents");
     const [events, setEvents] = useState<EventType[]>([]);
 
     useEffect(() => {
