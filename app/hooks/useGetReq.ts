@@ -7,7 +7,7 @@ const useGetReq = (url: string) => {
     const get = useCallback(async () => {
         setLoadingState(loadingStatus.isLoading);
         try {
-            const rsp = await fetch(url, { credentials: "include" });
+            const rsp = await fetch(url, { credentials: "include", headers: { "X_CSRF": "1"} });
             const result = await rsp.json();
             setLoadingState(loadingStatus.loaded);
             return result;
