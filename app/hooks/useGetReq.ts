@@ -4,10 +4,10 @@ import { useCallback, useState } from "react";
 const useGetReq = (url: string) => {
     const [loadingState, setLoadingState] = useState(loadingStatus.isLoading);
 
-    const get = useCallback(async ()=>{
+    const get = useCallback(async () => {
         setLoadingState(loadingStatus.isLoading);
         try {
-            const rsp = await fetch(url);
+            const rsp = await fetch(url, { credentials: "include" });
             const result = await rsp.json();
             setLoadingState(loadingStatus.loaded);
             return result;
@@ -16,7 +16,7 @@ const useGetReq = (url: string) => {
         }
     }, [url]);
 
-    return {get, loadingState}
+    return { get, loadingState }
 }
 
 export default useGetReq;
