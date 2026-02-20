@@ -45,7 +45,7 @@ function Events() {
                     <EventsLoading />
                 )
                 ||
-                loadingState === loadingStatus.loaded && events.length === 0 && (
+                loadingState === loadingStatus.loaded && events.length > 0 && (
                     <Row xs={1} md={3} className="g-4 padding-top-2x">
                     {events.map((event) => (
                         <Col key={event.id}>

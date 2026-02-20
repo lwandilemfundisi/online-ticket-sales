@@ -9,7 +9,6 @@ const useEvents = () => {
     useEffect(() => {
         const getEvents = async () => {
             const data = await get();
-            console.info("Events data:", data);
             setEvents(data.events);
         };
         getEvents();
